@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Employee Register</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -23,6 +23,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OfficeLocation)
+            </th>
+            <th>
+                <a asp-action="Create">Employee</a>
             </th>
             <th></th>
         </tr>
