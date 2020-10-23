@@ -6,9 +6,6 @@
 
 <h2>Employee Register</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -25,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.OfficeLocation)
             </th>
             <th>
-                <a asp-action="Create">Employee</a>
+                <a asp-action="Create"><i class="fas fa-plus-square"></i>  Employee</a>
             </th>
             <th></th>
         </tr>
@@ -46,11 +43,22 @@
                 @Html.DisplayFor(modelItem => item.OfficeLocation)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EmployeeId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.EmployeeId"><i class="fas fa-edit"></i></a>
+                <a onclick="alertMessage(@item.EmployeeId)"><i class="fas fa-eraser" style="color: darkred"></i></a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script>
+    function alertMessage(item) {
+        if (confirm("Are you sure you want to delete this?")) {
+            $().ready(function () {
+                // $(".delete-button").click(null, DeleteItem); //DeleteItem is the callback
+                window.location.href = '@Url.Action("Delete", "Employees")/' + item;
+                return false;
+            });
+        }
+    }
+</script>
